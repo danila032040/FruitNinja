@@ -220,10 +220,8 @@ MonoBehaviour:
   priority: 5
   minPlacePercentage: 0.2
   maxPlacePercentage: 0.8
-  minVelocity: 2.5
-  maxVelocity: 3
-  minAngle: 75
-  maxAngle: 90
+  minVelocity: 2
+  maxVelocity: 3.5
   viewportPositionGoal: {x: 0.5, y: 0.5}
 --- !u!114 &786496358
 MonoBehaviour:
@@ -241,10 +239,8 @@ MonoBehaviour:
   priority: 2
   minPlacePercentage: 0.3
   maxPlacePercentage: 0.7
-  minVelocity: 2.5
+  minVelocity: 2
   maxVelocity: 3
-  minAngle: 45
-  maxAngle: 75
   viewportPositionGoal: {x: 0.5, y: 1}
 --- !u!1 &1447843993
 GameObject:
@@ -310,8 +306,6 @@ MonoBehaviour:
   priority: 2
   minPlacePercentage: 0.3
   maxPlacePercentage: 0.7
-  minVelocity: 2.5
+  minVelocity: 2
   maxVelocity: 3
-  minAngle: 45
-  maxAngle: 75
   viewportPositionGoal: {x: 0.5, y: 1}

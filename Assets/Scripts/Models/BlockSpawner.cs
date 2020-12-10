@@ -1,23 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BlockSpawner : MonoBehaviour
+[System.Serializable]
+public class BlockSpawner : ScriptableObject
 {
     public enum EPlace
     {
         Up,
+        Right,
         Down,
         Left,
-        Right
     }
 
-    [SerializeField]
-    private EPlace place;
+    public const int MinPriorityValue = 0;
+    public const int MaxPriorityValue = 10;
+    public const float MinVelocityValue = 0f;
+    public const float MaxVelocityValue = 5f;
+
+    #region Fields
 
     [SerializeField]
-    [Range(0, 10)]
-    private uint priority;
+    private EPlace place = EPlace.Down;
+
+    [SerializeField]
+    [Range(MinPriorityValue, MaxPriorityValue)]
+    private int priority;
 
     [SerializeField]
     [Range(0, 1)]
@@ -25,54 +31,53 @@ public class BlockSpawner : MonoBehaviour
 
     [SerializeField]
     [Range(0, 1)]
-    private float maxPlacePercentage;
+    private float maxPlacePercentage = 1f;
 
     [SerializeField]
-    private Block prefabBlock;
+    [Range(MinVelocityValue, MaxVelocityValue)]
+    private float minVelocity = MinVelocityValue;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(nameof(Spawn));
-    }
+    [SerializeField]
+    [Range(MinVelocityValue, MaxVelocityValue)]
+    private float maxVelocity = MaxVelocityValue;
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    [SerializeField]
+    private Vector2 viewportPositionGoal = new Vector2(0.5f, 0.5f);
 
-    IEnumerator Spawn()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(.1f);
-            SpawnOneBlock();
-        }
-    }
+    #endregion
 
-    void SpawnOneBlock()
+    #region Getters
+
+    public EPlace Place => this.place;
+    public int Priority => this.priority;
+    public float MinPlacePercentage => this.minPlacePercentage;
+    public float MaxPlacePercentage => this.maxPlacePercentage;
+    public float MinVelocity => this.minVelocity;
+    public float MaxVelocity => this.maxVelocity;
+
+    #endregion
+
+    private Vector2 VectorForMoveFromTo(Vector2 start, Vector2 goal) => new Vector2(goal.x - start.x, goal.y - start.y).normalized;
+
+    public void SpawnOneBlock(Block prefab)
     {
         Vector3 viewportPos = new Vector3(0, 0, Camera.main.nearClipPlane);
-        switch (place)
+        Vector3 velocity = new Vector3(0, 0, 0);
+
+        if (place == EPlace.Left || place == EPlace.Right)
         {
-            case EPlace.Up:
-                viewportPos.x = Random.Range(minPlacePercentage, maxPlacePercentage);
-                viewportPos.y = 1;
-                break;
-            case EPlace.Right:
-                viewportPos.x = 1;
-                viewportPos.y = Random.Range(minPlacePercentage, maxPlacePercentage);
-                break;
-            case EPlace.Down:
-                viewportPos.x = Random.Range(minPlacePercentage, maxPlacePercentage);
-                viewportPos.y = 0;
-                break;
-            case EPlace.Left:
-                viewportPos.x = 0;
-                viewportPos.y = Random.Range(minPlacePercentage, maxPlacePercentage);
-                break;
+            viewportPos.x = place == EPlace.Right ? 1 : 0;
+            viewportPos.y = Random.Range(minPlacePercentage, maxPlacePercentage);
         }
+        else
+        {
+            viewportPos.x = Random.Range(minPlacePercentage, maxPlacePercentage);
+            viewportPos.y = place == EPlace.Up ? 1 : 0;
+        }
+
+        velocity = VectorForMoveFromTo(viewportPos, viewportPositionGoal) * Random.Range(minVelocity, maxVelocity);
         Vector3 result = Camera.main.ViewportToWorldPoint(viewportPos);
-        PhysicalObject obj = Instantiate(prefabBlock, result, Quaternion.identity).GetComponent<PhysicalObject>();
+        PhysicalObject obj = Instantiate(prefab, result, Quaternion.identity);
+        obj.AddVelocity(velocity);
     }
 }
