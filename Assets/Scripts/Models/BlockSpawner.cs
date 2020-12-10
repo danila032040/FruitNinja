@@ -48,12 +48,68 @@ public class BlockSpawner : ScriptableObject
 
     #region Getters
 
-    public EPlace Place => this.place;
-    public int Priority => this.priority;
-    public float MinPlacePercentage => this.minPlacePercentage;
-    public float MaxPlacePercentage => this.maxPlacePercentage;
-    public float MinVelocity => this.minVelocity;
-    public float MaxVelocity => this.maxVelocity;
+    public EPlace Place
+    {
+        get => this.place;
+        set
+        {
+            this.place = value;
+        }
+    }
+
+    public int Priority
+    {
+        get => this.priority;
+        set
+        {
+            this.priority = value;
+        }
+    }
+
+    public float MinPlacePercentage
+    {
+        get => this.minPlacePercentage;
+        set
+        {
+            this.minPlacePercentage = value;
+        }
+    }
+
+    public float MaxPlacePercentage
+    {
+        get => this.maxPlacePercentage;
+        set
+        {
+            this.maxPlacePercentage = value;
+        }
+    }
+
+    public float MinVelocity
+    {
+        get => this.minVelocity;
+        set
+        {
+            this.minVelocity = value;
+        }
+    }
+
+    public float MaxVelocity
+    {
+        get => this.maxVelocity;
+        set
+        {
+            this.maxVelocity = value;
+        }
+    }
+
+    public Vector2 ViewportPositionGoal
+    {
+        get => this.viewportPositionGoal;
+        set
+        {
+            this.viewportPositionGoal = value;
+        }
+    }
 
     #endregion
 
