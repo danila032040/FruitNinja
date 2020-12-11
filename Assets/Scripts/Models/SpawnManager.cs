@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
 
     public void Start()
     {
-        blockSpawners.Sort(new BlockSpawnerPriorityComparer());
+        blockSpawners.Sort(new BlockSpawnerPriorityComparerDesc());
         StartCoroutine(Spawn());
     }
 
