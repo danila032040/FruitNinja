@@ -5,74 +5,81 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private BlockSpawner rightSpawner;
+    private List<BlockSpawner> blockSpawners;
     [SerializeField]
-    private BlockSpawner downSpawner;
+    private List<Block> blockPrefabs;
+
     [SerializeField]
-    private BlockSpawner leftSpawner;
-    public List<Block> blockPrefabs;
+    private int minBlocksInPack = 2;
 
-    public void Awake()
-    {
-        if (rightSpawner == null) rightSpawner = CreateDefaultRightSpawner();
-        if (downSpawner == null)  downSpawner = CreateDefaultDownSpawner();
-        if (leftSpawner == null)  leftSpawner = CreateDefaultLeftSpawner();
-    }
+    [SerializeField]
+    private int maxBlocksInPack = 5;
 
-    public BlockSpawner CreateDefaultRightSpawner() =>
-        new BlockSpawner()
-        {
-            Place = BlockSpawner.EPlace.Right,
-            Priority = 2,
-            MinPlacePercentage = 0.3f,
-            MaxPlacePercentage = 0.7f,
-            MinVelocity = 2,
-            MaxVelocity = 3,
-            ViewportPositionGoal = new Vector2(0.5f, 1f)
-        };
+    [SerializeField]
+    private float maxDifficulty = 100f;
 
-    public BlockSpawner CreateDefaultDownSpawner() =>
-        new BlockSpawner()
-        {
-            Place = BlockSpawner.EPlace.Down,
-            Priority = 5,
-            MinPlacePercentage = 0.2f,
-            MaxPlacePercentage = 0.8f,
-            MinVelocity = 2f,
-            MaxVelocity = 3.5f,
-            ViewportPositionGoal = new Vector2(0.5f, 0.5f)
-        };
+    [SerializeField]
+    private float minIntervalPack = 2.5f;
+    [SerializeField]
+    private float maxIntervalPack = 4f;
 
-    public BlockSpawner CreateDefaultLeftSpawner() =>
-        new BlockSpawner()
-        {
-            Place = BlockSpawner.EPlace.Left,
-            Priority = 2,
-            MinPlacePercentage = 0.3f,
-            MaxPlacePercentage = 0.7f,
-            MinVelocity = 2,
-            MaxVelocity = 3,
-            ViewportPositionGoal = new Vector2(0.5f, 1f)
-        };
+    [SerializeField]
+    private float minIntervalBlock = 0.25f;
+    [SerializeField]
+    private float maxIntervalBlock = 0.5f;
 
     public void Start()
     {
-        StartCoroutine(SpawnBlock());
+        blockSpawners.Sort(new BlockSpawnerPriorityComparer());
+        StartCoroutine(Spawn());
     }
 
-    public IEnumerator SpawnBlock()
+    private int currentDifficulty;
+    public IEnumerator Spawn()
     {
+        currentDifficulty = 0;
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            int random = Random.Range(BlockSpawner.MinPriorityValue, BlockSpawner.MaxPriorityValue);
-
-            if (random <= rightSpawner.Priority) rightSpawner.SpawnOneBlock(GetRandomBlock());
-            if (random <= leftSpawner.Priority) leftSpawner.SpawnOneBlock(GetRandomBlock());
-            if (random <= downSpawner.Priority) downSpawner.SpawnOneBlock(GetRandomBlock());
+            StartCoroutine(SpawnPackOfBlocks(GetCurrentCountBlocksInPack()));
+            yield return new WaitForSeconds(GetCurrentInvervalPack());
+            ++currentDifficulty;
         }
     }
+    public float GetCurrentInvervalPack()
+    {
+        return Mathf.Lerp(maxIntervalPack, minIntervalPack, GetPercentage(currentDifficulty, maxDifficulty));
+    }
 
+    public float GetCurrentInvervalBlock()
+    {
+        return Mathf.Lerp(maxIntervalBlock, minIntervalBlock, GetPercentage(currentDifficulty, maxDifficulty));
+    }
+
+    public int GetCurrentCountBlocksInPack()
+    {
+        return (int)Mathf.Lerp(minBlocksInPack, maxBlocksInPack, GetPercentage(currentDifficulty, maxDifficulty));
+    }
+
+    private float GetPercentage(float min, float max) => Mathf.Min(1, min / max);
+
+    public IEnumerator SpawnPackOfBlocks(int countBlocks)
+    {
+        while (countBlocks > 0)
+        {
+            int random = Random.Range(BlockSpawner.MinPriorityValue, BlockSpawner.MaxPriorityValue);
+
+            foreach (BlockSpawner item in blockSpawners)
+            {
+                if (random <= item.Priority)
+                {
+                    item.SpawnOneBlock(GetRandomBlock());
+                    --countBlocks;
+                    yield return new WaitForSeconds(GetCurrentInvervalBlock());
+                    if (countBlocks == 0) break;
+                }
+            }
+        }
+    }
     public Block GetRandomBlock() => blockPrefabs[Random.Range(0, blockPrefabs.Count - 1)];
 
 }
