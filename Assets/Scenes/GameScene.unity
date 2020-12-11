@@ -204,44 +204,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &525195712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043f1dda6ce3d4a4b87e075dfd20ece0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 2
-  priority: 5
-  minPlacePercentage: 0.2
-  maxPlacePercentage: 0.8
-  minVelocity: 2
-  maxVelocity: 3.5
-  viewportPositionGoal: {x: 0.5, y: 0.5}
---- !u!114 &786496358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043f1dda6ce3d4a4b87e075dfd20ece0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 3
-  priority: 2
-  minPlacePercentage: 0.3
-  maxPlacePercentage: 0.7
-  minVelocity: 2
-  maxVelocity: 3
-  viewportPositionGoal: {x: 0.5, y: 1}
 --- !u!1 &1447843993
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,11 +233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639f208f281ce584796c5f8321bfa4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightSpawner: {fileID: 1769280544}
-  downSpawner: {fileID: 525195712}
-  leftSpawner: {fileID: 786496358}
+  blockSpawners:
+  - {fileID: 11400000, guid: 0ecae2527b473ed49b56df822b9d27b3, type: 2}
+  - {fileID: 11400000, guid: 34ce3aea0604dcc459ce11d508d4372b, type: 2}
+  - {fileID: 11400000, guid: 5987fcf1e6f93b649a6b1e96696d8a4a, type: 2}
   blockPrefabs:
   - {fileID: 4872418766978574403, guid: 0236c2224f2cb8b43a327d2cc510abaf, type: 3}
+  minBlocksInPack: 2
+  maxBlocksInPack: 5
+  maxDifficulty: 100
+  minIntervalPack: 2.5
+  maxIntervalPack: 4
+  minIntervalBlock: 0.25
+  maxIntervalBlock: 0.5
 --- !u!4 &1447843995
 Transform:
   m_ObjectHideFlags: 0
@@ -290,22 +260,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1769280544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043f1dda6ce3d4a4b87e075dfd20ece0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 1
-  priority: 2
-  minPlacePercentage: 0.3
-  maxPlacePercentage: 0.7
-  minVelocity: 2
-  maxVelocity: 3
-  viewportPositionGoal: {x: 0.5, y: 1}

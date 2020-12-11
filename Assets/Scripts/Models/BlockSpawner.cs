@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
+[CreateAssetMenu(fileName = "BlockSpawner", menuName = "ScriptableObjects/BlockSpawner", order = 1)]
 public class BlockSpawner : ScriptableObject
 {
     public enum EPlace
