@@ -238,7 +238,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34ce3aea0604dcc459ce11d508d4372b, type: 2}
   - {fileID: 11400000, guid: 5987fcf1e6f93b649a6b1e96696d8a4a, type: 2}
   blockPrefabs:
-  - {fileID: 4872418766978574403, guid: 0236c2224f2cb8b43a327d2cc510abaf, type: 3}
+  - {fileID: 2115947968385901403, guid: 7bbb98a0ca4e96a4caef78a9e9f4fe39, type: 3}
+  - {fileID: 1569468412277248465, guid: 615f2f90040132e49842e58882704a77, type: 3}
+  - {fileID: 5439317585751403666, guid: 2c2ceba5d9a6e0348a4e88236a26e0e1, type: 3}
+  - {fileID: 7186970672459027453, guid: ba9c12bbd537e0d4b9e3c13bc94d4ac7, type: 3}
+  - {fileID: 3168111861164338153, guid: 1421b6ad41446c648aa924a568cf27ef, type: 3}
+  - {fileID: 681565130838997091, guid: 8725a28c8a055cb46a44b42b6d16df76, type: 3}
+  - {fileID: 6938303296540173339, guid: 3adf1fb34d3b5844396ee27cc1e05e01, type: 3}
+  - {fileID: 645501416228096191, guid: 1d9539a7991a1e84aaa5c15748c02efb, type: 3}
+  - {fileID: 8833784873623039132, guid: 200e126274fbb8a42a7e2e22cf51c42e, type: 3}
+  - {fileID: 2677496147726995135, guid: 9b030d09b05c3be47af9ebaad6fb9142, type: 3}
+  - {fileID: 6084879005894390975, guid: 76aa6ede8526d1e4395ffe5e3b28d783, type: 3}
+  - {fileID: 3171742588984824446, guid: 8e35609333a693b4da57acee45458362, type: 3}
+  - {fileID: 3318844779965902061, guid: f0781bc841108964fa727fa241351f60, type: 3}
+  - {fileID: 237726156877168812, guid: 5031106bcac22eb4099cda2f60dbb138, type: 3}
+  - {fileID: 998185866001928449, guid: 1ea50eab4104f094dadfa4cb210f8e16, type: 3}
+  - {fileID: 6746440934206038342, guid: 11242bcb133690a408aee8e2075185f3, type: 3}
+  - {fileID: 6199316937572605127, guid: 34e46449abe4f4e4a9335a1f9f9b0361, type: 3}
+  - {fileID: 5054590078494534357, guid: 34e46449abe4f4e4a9335a1f9f9b0361, type: 3}
   minBlocksInPack: 2
   maxBlocksInPack: 5
   maxDifficulty: 100
