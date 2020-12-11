@@ -2,6 +2,25 @@
 
 public class PhysicalObject : MonoBehaviour
 {
+
+    public Animator animator;
+    public void Awake()
+    {
+        this.animator = GetComponent<Animator>();
+    }
+
+    public float VelocityRotation
+    {
+        get
+        {
+            return this.animator.GetFloat("VelocityRotation");
+        }
+        set
+        {
+            this.animator.SetFloat("VelocityRotation", value);
+        }
+    }
+
     [SerializeField]
     private float gravityScale = 1f;
     [SerializeField]

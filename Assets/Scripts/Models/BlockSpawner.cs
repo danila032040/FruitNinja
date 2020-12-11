@@ -15,6 +15,8 @@ public class BlockSpawner : ScriptableObject
     public const int MaxPriorityValue = 10;
     public const float MinVelocityValue = 0f;
     public const float MaxVelocityValue = 5f;
+    public const float MinVelocityRotationValue = -1f;
+    public const float MaxVelocityRotationValue = 1f; 
 
     #region Fields
 
@@ -40,6 +42,14 @@ public class BlockSpawner : ScriptableObject
     [SerializeField]
     [Range(MinVelocityValue, MaxVelocityValue)]
     private float maxVelocity = MaxVelocityValue;
+
+    [SerializeField]
+    [Range(MinVelocityRotationValue, MaxVelocityRotationValue)]
+    private float minVelocityRotation = MinVelocityRotationValue;
+
+    [SerializeField]
+    [Range(MinVelocityRotationValue, MaxVelocityRotationValue)]
+    private float maxVelocityRotation = MaxVelocityRotationValue;
 
     [SerializeField]
     private Vector2 viewportPositionGoal = new Vector2(0.5f, 0.5f);
@@ -102,6 +112,24 @@ public class BlockSpawner : ScriptableObject
         }
     }
 
+    public float MinVelocityRotation
+    {
+        get => minVelocityRotation;
+        set
+        {
+            minVelocityRotation = value;
+        }
+    }
+
+    public float MaxVelocityRotation
+    {
+        get => maxVelocityRotation;
+        set
+        {
+            maxVelocityRotation = value;
+        }
+    }
+
     public Vector2 ViewportPositionGoal
     {
         get => this.viewportPositionGoal;
@@ -135,5 +163,6 @@ public class BlockSpawner : ScriptableObject
         Vector3 result = Camera.main.ViewportToWorldPoint(viewportPos);
         PhysicalObject obj = Instantiate(prefab, result, Quaternion.identity);
         obj.AddVelocity(velocity);
+        obj.VelocityRotation = Random.Range(minVelocityRotation, maxVelocityRotation);
     }
 }

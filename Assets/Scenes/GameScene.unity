@@ -254,8 +254,8 @@ MonoBehaviour:
   - {fileID: 237726156877168812, guid: 5031106bcac22eb4099cda2f60dbb138, type: 3}
   - {fileID: 998185866001928449, guid: 1ea50eab4104f094dadfa4cb210f8e16, type: 3}
   - {fileID: 6746440934206038342, guid: 11242bcb133690a408aee8e2075185f3, type: 3}
+  - {fileID: 8766850462689674822, guid: 913a8e2f8ca99bd4abefcfdc70059fae, type: 3}
   - {fileID: 6199316937572605127, guid: 34e46449abe4f4e4a9335a1f9f9b0361, type: 3}
-  - {fileID: 5054590078494534357, guid: 34e46449abe4f4e4a9335a1f9f9b0361, type: 3}
   minBlocksInPack: 2
   maxBlocksInPack: 5
   maxDifficulty: 100
