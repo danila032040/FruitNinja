@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -66,20 +67,29 @@ public class SpawnManager : MonoBehaviour
     {
         while (countBlocks > 0)
         {
-            int random = Random.Range(BlockSpawner.MinPriorityValue, BlockSpawner.MaxPriorityValue);
-
-            foreach (BlockSpawner item in blockSpawners)
-            {
-                if (random <= item.Priority)
-                {
-                    item.SpawnOneBlock(GetRandomBlock());
-                    --countBlocks;
-                    yield return new WaitForSeconds(GetCurrentInvervalBlock());
-                    if (countBlocks == 0) break;
-                }
-            }
+            ChooseBlockSpawnerByPriority().SpawnOneBlock(GetRandomBlock());
+            --countBlocks;
+            yield return new WaitForSeconds(GetCurrentInvervalBlock());
         }
     }
+
+    public BlockSpawner ChooseBlockSpawnerByPriority()
+    {
+        int summaryPriority = blockSpawners.Sum(a => a.Priority);
+        int random = Random.Range(0, summaryPriority);
+
+        int currentSum = 0;
+        for (int i=0; i<blockSpawners.Count; ++i)
+        {
+            if (currentSum < random && random < currentSum+blockSpawners[i].Priority)
+            {
+                return blockSpawners[i];
+            }
+            currentSum += blockSpawners[i].Priority;
+        }
+        return blockSpawners[0];
+    }
+
     public Block GetRandomBlock() => blockPrefabs[Random.Range(0, blockPrefabs.Count - 1)];
 
 }
