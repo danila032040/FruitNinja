@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043f1dda6ce3d4a4b87e075dfd20ece0, type: 3}
-  m_Name: BlockSpawnerRight
+  m_Name: ZoneSpawnerDownLine
   m_EditorClassIdentifier: 
-  place: 1
-  priority: 2
-  minPlacePercentage: 0.5
-  maxPlacePercentage: 0.75
+  startSpawnLine: {x: 0, y: 0}
+  endSpawnLine: {x: 1, y: 0}
+  viewportGoalPosition: {x: 0.5, y: 0.5}
+  priority: 5
   minVelocity: 2
-  maxVelocity: 2.5
+  maxVelocity: 3.5
   minVelocityRotation: -360
   maxVelocityRotation: 360
-  viewportPositionGoal: {x: 0.5, y: 1}
