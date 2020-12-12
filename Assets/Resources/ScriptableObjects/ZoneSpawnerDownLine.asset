@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043f1dda6ce3d4a4b87e075dfd20ece0, type: 3}
   m_Name: ZoneSpawnerDownLine
   m_EditorClassIdentifier: 
-  startSpawnLine: {x: 0, y: 0}
-  endSpawnLine: {x: 1, y: 0}
-  viewportGoalPosition: {x: 0.5, y: 0.5}
   priority: 5
   minVelocity: 2
   maxVelocity: 3.5
   minVelocityRotation: -360
   maxVelocityRotation: 360
+  startSpawnLine: {x: 0.2, y: 0}
+  endSpawnLine: {x: 0.8, y: 0}
+  viewportGoalPosition: {x: 0.5, y: 0.5}
