@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4872418766978574400}
   - component: {fileID: 4872418766978574401}
   - component: {fileID: 8263240740468878228}
-  - component: {fileID: 1098533532043455815}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Untagged
@@ -97,22 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityScale: 1
   weight: 1
---- !u!95 &1098533532043455815
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4872418766978574415}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5deebb56c702df74c831ffc2e27d05ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  velocityRotation: 0

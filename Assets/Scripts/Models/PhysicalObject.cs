@@ -3,28 +3,9 @@
 public class PhysicalObject : MonoBehaviour
 {
 
-    public Animator animator;
-    public void Awake()
-    {
-        this.animator = GetComponent<Animator>();
-    }
-
-    public float VelocityRotation
-    {
-        get
-        {
-            return this.animator.GetFloat("VelocityRotation");
-        }
-        set
-        {
-            this.animator.SetFloat("VelocityRotation", value);
-        }
-    }
-
-    [SerializeField]
-    private float gravityScale = 1f;
-    [SerializeField]
-    private float weight = 1f;
+    [SerializeField] private float gravityScale = 1f;
+    [SerializeField] private float weight = 1f;
+    [SerializeField] private float velocityRotation;
 
     private Vector3 externalforce;
     private Vector3 speed;
@@ -36,12 +17,17 @@ public class PhysicalObject : MonoBehaviour
     void Update()
     {
         Move();
+        Rotate();
     }
 
     private void Move()
     {
-        gameObject.transform.position += speed * Time.deltaTime;
+        transform.position += speed * Time.deltaTime;
         speed += Acceleration * Time.deltaTime;
+    }
+    private void Rotate()
+    {
+        transform.rotation = transform.rotation * Quaternion.AngleAxis(velocityRotation * Time.deltaTime, transform.forward);
     }
 
     public void AddAcceleration(Vector3 acceleration)
@@ -62,5 +48,10 @@ public class PhysicalObject : MonoBehaviour
     public void AddVelocity(Vector3 velocity)
     {
         this.speed += velocity; 
+    }
+
+    public void AddVelocityRotation(float velocity)
+    {
+        velocityRotation += velocity;
     }
 }

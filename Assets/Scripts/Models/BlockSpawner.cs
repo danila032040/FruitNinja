@@ -161,8 +161,8 @@ public class BlockSpawner : ScriptableObject
 
         velocity = VectorForMoveFromTo(viewportPos, viewportPositionGoal) * Random.Range(minVelocity, maxVelocity);
         Vector3 result = Camera.main.ViewportToWorldPoint(viewportPos);
-        PhysicalObject obj = Instantiate(prefab, result, Quaternion.identity);
+        Block obj = Instantiate(prefab, result, Quaternion.identity);
         obj.AddVelocity(velocity);
-        obj.VelocityRotation = Random.Range(minVelocityRotation, maxVelocityRotation);
+        obj.AddVelocityRotation(Random.Range(minVelocityRotation, maxVelocityRotation));
     }
 }

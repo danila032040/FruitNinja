@@ -18,6 +18,6 @@ MonoBehaviour:
   maxPlacePercentage: 0.8
   minVelocity: 2
   maxVelocity: 3
-  minVelocityRotation: -0.75
-  maxVelocityRotation: 0.75
+  minVelocityRotation: -360
+  maxVelocityRotation: 360
   viewportPositionGoal: {x: 0.5, y: 1}
