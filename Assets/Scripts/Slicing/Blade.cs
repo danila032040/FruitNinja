@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    [SerializeField] private float minSlicingVelocity = 0.01f;
     [SerializeField] private float minSlicingDistance = 0.01f;
 
     private Camera mainCamera;
@@ -35,8 +34,10 @@ public class Blade : MonoBehaviour
 
         gameObject.transform.position = mainCamera.ScreenToWorldPoint(newPosition);
 
-        if (isSlicing && Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingDistance &&
-                         Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingVelocity * Time.deltaTime)
+
+        newPosition = mainCamera.ScreenToViewportPoint(newPosition);
+
+        if (isSlicing && Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingDistance)
         {
             trail.enabled = true;
             SliceBlocks((newPosition - oldPosition).normalized);
