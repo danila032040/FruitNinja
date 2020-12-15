@@ -20,9 +20,20 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float minIntervalBlock = 0.25f;
     [SerializeField] private float maxIntervalBlock = 0.5f;
 
+    private Coroutine spawnCoroutine;
+
     public void Start()
     {
-        StartCoroutine(Spawn());
+        StartSpawn();
+    }
+
+    public void StartSpawn()
+    {
+        spawnCoroutine = StartCoroutine(Spawn());
+    }
+    public void StopSpawn()
+    {
+        StopCoroutine(spawnCoroutine);
     }
 
     private int currentDifficulty;

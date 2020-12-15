@@ -233,7 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c719e373ec7694446b4a02b96c936926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSlicingVelocity: 5
+  minSlicingVelocity: 500
+  minSlicingDistance: 2
 --- !u!4 &972360329
 Transform:
   m_ObjectHideFlags: 0
@@ -368,8 +369,8 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 5
+    numCapVertices: 5
     alignment: 0
     textureMode: 0
     shadowBias: 0.5

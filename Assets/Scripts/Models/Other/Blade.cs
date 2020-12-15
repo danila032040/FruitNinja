@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    [SerializeField]
-    private float minSlicingVelocity = 0.01f;
+    [SerializeField] private float minSlicingVelocity = 0.01f;
+    [SerializeField] private float minSlicingDistance = 0.01f;
 
     private Camera mainCamera;
     private bool isSlicing;
@@ -23,23 +23,41 @@ public class Blade : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) StartSlicing();
         if (Input.GetMouseButtonUp(0)) EndSlicing();
 
-        Slice();
+        Slicing();
     }
 
     private Vector3 oldPosition;
 
-    public void Slice()
+    public void Slicing()
     {
         Vector3 newPosition = Input.mousePosition;
         newPosition.z = mainCamera.nearClipPlane;
 
         gameObject.transform.position = mainCamera.ScreenToWorldPoint(newPosition);
 
-        if (isSlicing && Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingVelocity)
+        if (isSlicing && Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingDistance &&
+                         Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingVelocity * Time.deltaTime)
         {
             trail.enabled = true;
+            SliceBlocks((newPosition - oldPosition).normalized);
+        }
+        else
+        {
+            trail.enabled = false;
         }
         oldPosition = newPosition;
+    }
+
+    public void SliceBlocks(Vector3 direction)
+    {
+        Block[] blocks = FindObjectsOfType<Block>();
+        foreach(Block block in blocks)
+        {
+            if ((gameObject.transform.position - block.gameObject.transform.position).magnitude<=block.Radius)
+            {
+                block.Slice(direction);
+            }
+        }
     }
 
     public void StartSlicing()
