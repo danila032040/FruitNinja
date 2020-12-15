@@ -88,5 +88,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lime
       objectReference: {fileID: 0}
+    - target: {fileID: 8263240740468878228, guid: 0236c2224f2cb8b43a327d2cc510abaf,
+        type: 3}
+      propertyPath: FruitColor.r
+      value: 0.6431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263240740468878228, guid: 0236c2224f2cb8b43a327d2cc510abaf,
+        type: 3}
+      propertyPath: FruitColor.g
+      value: 0.7843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263240740468878228, guid: 0236c2224f2cb8b43a327d2cc510abaf,
+        type: 3}
+      propertyPath: FruitColor.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263240740468878228, guid: 0236c2224f2cb8b43a327d2cc510abaf,
+        type: 3}
+      propertyPath: FruitColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0236c2224f2cb8b43a327d2cc510abaf, type: 3}

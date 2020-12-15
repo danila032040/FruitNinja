@@ -5,6 +5,9 @@ public class Fruit : Block
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SlicedPart slicedPartPrefab;
+    [SerializeField] private SlicingFruitEffect slicingEffectPrefab;
+
+    [SerializeField] private Color FruitColor;
 
     public void Start()
     {
@@ -26,6 +29,11 @@ public class Fruit : Block
 
             left.AddVelocity(Quaternion.Euler(0, 0, 90) * direction);
             right.AddVelocity(Quaternion.Euler(0, 0, -90) * direction);
+
+            SlicingFruitEffect effect = Instantiate(slicingEffectPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+
+            effect.SetColor(FruitColor);
+            effect.ShowEffects();
 
         }
         base.Slice(direction);

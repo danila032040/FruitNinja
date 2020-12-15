@@ -101,3 +101,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4872418766978574401}
   slicedPartPrefab: {fileID: 7502067253601482142, guid: b57ed5faa02c3574db5c79488c97380d,
     type: 3}
+  slicingEffectPrefab: {fileID: 6977841623604107169, guid: c2d5bc014e5896343aa0da8dbb6dc673,
+    type: 3}
+  FruitColor: {r: 0, g: 0, b: 0, a: 0}
