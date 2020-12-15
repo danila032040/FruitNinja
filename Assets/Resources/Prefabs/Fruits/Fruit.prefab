@@ -103,4 +103,6 @@ MonoBehaviour:
     type: 3}
   slicingEffectPrefab: {fileID: 6977841623604107169, guid: c2d5bc014e5896343aa0da8dbb6dc673,
     type: 3}
+  playerController: {fileID: 0}
+  scoreConfiguration: {fileID: 11400000, guid: 5e597ca1e7d1a2240ab20ec3cb4819e1, type: 2}
   FruitColor: {r: 0, g: 0, b: 0, a: 0}

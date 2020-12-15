@@ -9,13 +9,10 @@ public class Block : PhysicalObject
     protected bool isSliced = false;
 
 
-    public event UnityAction Sliced;
-
     public float Radius => radius;
 
     public virtual void Slice(Vector3 direction)
     {
-        Sliced?.Invoke();
         isSliced = true;
     }
 
@@ -24,7 +21,7 @@ public class Block : PhysicalObject
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         BlockManager.existBlocks.Remove(this);
     }

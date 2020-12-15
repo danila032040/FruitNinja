@@ -233,8 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c719e373ec7694446b4a02b96c936926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSlicingVelocity: 500
-  minSlicingDistance: 2
+  minSlicingDistance: 0.005
 --- !u!4 &972360329
 Transform:
   m_ObjectHideFlags: 0
@@ -378,6 +377,57 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &1267819352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267819354}
+  - component: {fileID: 1267819353}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1267819353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267819352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa5deb0d156fe745a1880efe2f57c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerModel:
+    health: 0
+    score: 0
+  healthView: {fileID: 0}
+  scoreView: {fileID: 0}
+  healthConfiguration: {fileID: 11400000, guid: 6580071324e96884baf3aebe0867d76d,
+    type: 2}
+  scoreConfiguration: {fileID: 11400000, guid: 5e597ca1e7d1a2240ab20ec3cb4819e1, type: 2}
+--- !u!4 &1267819354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267819352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1447843993
 GameObject:
   m_ObjectHideFlags: 0

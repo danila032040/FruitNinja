@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Scripts.Configurations;
+using Scripts.Controllers;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Fruit : Block
@@ -9,15 +11,26 @@ public class Fruit : Block
 
     [SerializeField] private Color FruitColor;
 
+    private PlayerController playerController;
+
     public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     public override void Slice(Vector3 direction)
     {
+        SliceProcess(direction);
+        base.Slice(direction);
+    }
+
+    public void SliceProcess(Vector3 direction)
+    {
         if (!isSliced)
         {
+            this.isSliced = true;
+            
             List<Sprite> sprites = DivideCurrentSpriteIntoPartsByWidth(2);
             Destroy(gameObject);
 
@@ -36,8 +49,8 @@ public class Fruit : Block
             effect.SetColor(FruitColor);
             effect.ShowEffects();
 
+            playerController.AddScore(playerController.ScoreConfiguration.ScoreForFruit);
         }
-        base.Slice(direction);
     }
 
 
@@ -56,5 +69,11 @@ public class Fruit : Block
         }
 
         return sprites;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        if (!isSliced) playerController.AddHealth(playerController.HealthConfiguration.AddHealthForSlicingFruit);
     }
 }
