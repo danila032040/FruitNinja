@@ -56,7 +56,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (countBlocks > 0)
         {
-            ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock());
+            BlockManager.existBlocks.Add(ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock()));
             --countBlocks;
             yield return new WaitForSeconds(LerpByDifficulty(maxIntervalBlock, minIntervalBlock));
         }

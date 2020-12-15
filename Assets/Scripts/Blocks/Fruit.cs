@@ -21,6 +21,7 @@ public class Fruit : Block
             List<Sprite> sprites = DivideCurrentSpriteIntoPartsByWidth(2);
             Destroy(gameObject);
 
+            //TOFIX: Make method
             SlicedPart left = Instantiate(slicedPartPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
             SlicedPart right = Instantiate(slicedPartPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
 

@@ -39,5 +39,5 @@ public abstract class ZoneSpawner : ScriptableObject
 
     public int Priority => priority;
 
-    public abstract void SpawnBlock(Block prefab);
+    public abstract Block SpawnBlock(Block prefab);
 }

@@ -15,7 +15,7 @@ public class ZoneSpawnerLine : ZoneSpawner
         return Vector2.Lerp(start, end, percentage);
     }
 
-    public override void SpawnBlock(Block prefab)
+    public override Block SpawnBlock(Block prefab)
     {
         Vector2 randPointOnLine = RandomPointOnLine(startSpawnLine, endSpawnLine);
         Vector3 viewportPos = new Vector3(randPointOnLine.x, randPointOnLine.y, Camera.main.nearClipPlane);
@@ -26,5 +26,7 @@ public class ZoneSpawnerLine : ZoneSpawner
 
         obj.AddVelocity(velocity);
         obj.AddVelocityRotation(Random.Range(minVelocityRotation, maxVelocityRotation));
+
+        return obj;
     }
 }

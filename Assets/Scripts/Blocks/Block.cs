@@ -23,4 +23,9 @@ public class Block : PhysicalObject
     {
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        BlockManager.existBlocks.Remove(this);
+    }
 }
