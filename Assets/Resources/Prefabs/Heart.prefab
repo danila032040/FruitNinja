@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3361714575274311583}
   - component: {fileID: 4285762084680804911}
   - component: {fileID: 3359759425951909801}
+  - component: {fileID: 1024539855392501028}
   m_Layer: 5
   m_Name: Heart
   m_TagString: Untagged
@@ -87,3 +88,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21190cb65e3c85e4f92f2b8469f55421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1024539855392501028}
+--- !u!95 &1024539855392501028
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177370615680678824}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1a50a99b0b89a343896000079ab4af6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d71544356ade14489cc9819350e9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deltaPercentageToAnimateAddingScore: 4
+  deltaPercentageToAnimateAddingScore: 3
   deltaPercentageToAnimateMaxAndCurrScore: 3
   colorForPositiveScore: {r: 0, g: 1, b: 0, a: 1}
   colorForNegativeScore: {r: 1, g: 0, b: 0, a: 1}
@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 701802151}
   - component: {fileID: 701802153}
   - component: {fileID: 701802152}
+  - component: {fileID: 701802154}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -733,7 +734,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1390061029}
   m_Father: {fileID: 77770901}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -779,6 +781,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701802150}
   m_CullTransparentMesh: 0
+--- !u!114 &701802154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701802150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83c6499fd3e8cc479cf779207f16590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartCollectionView: {fileID: 1390061031}
 --- !u!1 &732331918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1293,7 @@ MonoBehaviour:
     health: 0
     currScore: 0
     maxScore: 0
-  healthView: {fileID: 0}
+  healthView: {fileID: 701802154}
   scoreView: {fileID: 475979239}
   healthConfiguration: {fileID: 11400000, guid: 6580071324e96884baf3aebe0867d76d,
     type: 2}
@@ -1297,6 +1312,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1390061028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390061029}
+  - component: {fileID: 1390061030}
+  - component: {fileID: 1390061031}
+  m_Layer: 5
+  m_Name: HeartCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1390061029
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390061028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 701802151}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 560, y: 230}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1390061030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390061028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 10
+    m_Right: 10
+    m_Top: 10
+    m_Bottom: 10
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &1390061031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390061028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47aa3ee5c4a475547b9a996daa5c0f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heartViewPrefab: {fileID: 3359759425951909801, guid: e8f94bfd4cee6314da5deae5424bbf25,
+    type: 3}
 --- !u!1 &1447843993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1442,7 @@ MonoBehaviour:
   minBlocksInPack: 2
   maxBlocksInPack: 5
   maxDifficulty: 100
-  minIntervalPack: 4
+  minIntervalPack: 3
   maxIntervalPack: 6
   minIntervalBlock: 0.25
   maxIntervalBlock: 0.5

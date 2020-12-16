@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.NewCode.Resources;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.Views
@@ -11,8 +13,8 @@ namespace Scripts.Views
 
         public void SetHearts(int value)
         {
-            while (hearts.Count > value) TryRemoveHeart();
-            while (hearts.Count < value) TryAddHeart();
+            while (hearts.Count > value) TryRemoveHeartWithAnim();
+            while (hearts.Count < value) TryAddHeartWithAnim();
         }
 
         public void AddHearts(int value)
@@ -29,32 +31,40 @@ namespace Scripts.Views
             }
         }
 
-        private void TryAddHeart()
-        {
-            hearts.Add(Instantiate(_heartViewPrefab, transform));
-        }
-
-        private void TryRemoveHeart()
-        {
-            if (hearts.Count > 0)
-            {
-                Destroy(hearts[0].gameObject);
-                hearts.RemoveAt(0);
-            }
-        }
 
         private void TryAddHeartWithAnim()
         {
-            hearts.Add(Instantiate(_heartViewPrefab, transform));
+            StartCoroutine(AddHeartWithAnimCoroutine());
         }
 
         private void TryRemoveHeartWithAnim()
         {
+            StartCoroutine(RemoveHeartWithAnimCoroutine());
+        }
+
+        private IEnumerator AddHeartWithAnimCoroutine()
+        {
+            HeartView heart = Instantiate(_heartViewPrefab, transform);
+            hearts.Add(heart);
+            heart.Animator.SetTrigger(AnimatorResources.CreateHeartTriggerId);
+            yield break;
+        }
+
+        private IEnumerator RemoveHeartWithAnimCoroutine()
+        {
             if (hearts.Count > 0)
             {
-                Destroy(hearts[0].gameObject);
+                HeartView heart = hearts[0];
                 hearts.RemoveAt(0);
+
+                heart.Animator.SetTrigger(AnimatorResources.DeleteHeartTriggerId);
+
+                float animLength = heart.Animator.runtimeAnimatorController.animationClips[0].length;
+
+                yield return new WaitForSeconds(animLength);
+                Destroy(heart.gameObject);
             }
         }
+
     }
 }
