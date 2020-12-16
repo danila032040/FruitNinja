@@ -49,7 +49,7 @@ public class Fruit : Block
             effect.SetColor(FruitColor);
             effect.ShowEffects();
 
-            playerController.AddScore(playerController.ScoreConfiguration.ScoreForFruit);
+            playerController.AddScore(playerController.ScoreConfiguration.AddScoreForFruit);
         }
     }
 
@@ -74,6 +74,10 @@ public class Fruit : Block
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        if (!isSliced) playerController.AddHealth(playerController.HealthConfiguration.AddHealthForSlicingFruit);
+        if (!isSliced)
+        {
+            playerController.AddHealth(playerController.HealthConfiguration.AddHealthForSlicingFruit);
+            playerController.AddScore(playerController.ScoreConfiguration.RemoveScoreForFruit);
+        }
     }
 }

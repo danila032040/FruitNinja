@@ -7,6 +7,7 @@ namespace Scripts.Models
     public class PlayerModel
     {
         public int health;
-        public int score;
+        public int currScore;
+        public int maxScore;
     }
 }

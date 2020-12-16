@@ -26,23 +26,33 @@ namespace Scripts.Controllers
         public void ResetPlayer()
         {
             SetHealth(healthConfiguration.MaxHealth);
-            SetScore(scoreConfiguration.MinScore);
+            SetScore(scoreConfiguration.StartScore);
+            SetMaxScore(20);
         }
 
 
         public void AddHealth(int value) => SetHealth(playerModel.health + value);
-        public void AddScore(int value) => SetScore(playerModel.score + value);
+        public void AddScore(int value)
+        {
+            playerModel.currScore += value;
+            scoreView.AddCurrentScore(value);
+        }
 
 
         private void SetHealth(int value)
         {
             playerModel.health = value;
-            healthView.SetHealth(playerModel.health);
+            //healthView.SetHealth(playerModel.health);
         }
         private void SetScore(int value)
         {
-            playerModel.score = value;
-            scoreView.SetScore(playerModel.score);
+            playerModel.currScore = value;
+            scoreView.SetCurrentScore(playerModel.currScore);
+        }
+        private void SetMaxScore(int value)
+        {
+            playerModel.maxScore = value;
+            scoreView.SetMaxScore(playerModel.maxScore);
         }
     }
 }
