@@ -40,11 +40,12 @@ public class Blade : MonoBehaviour
         if (isSlicing && Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingDistance)
         {
             trail.enabled = true;
+            trail.emitting = true;
             SliceBlocks((newPosition - oldPosition).normalized);
         }
         else
         {
-            trail.enabled = false;
+            trail.emitting = false;
         }
         oldPosition = newPosition;
     }
