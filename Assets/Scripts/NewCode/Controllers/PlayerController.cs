@@ -31,7 +31,11 @@ namespace Scripts.Controllers
         }
 
 
-        public void AddHealth(int value) => SetHealth(playerModel.health + value);
+        public void AddHealth(int value)
+        {
+            playerModel.health += value;
+            healthView.AddHealth(value);
+        }
         public void AddScore(int value)
         {
             playerModel.currScore += value;
@@ -42,7 +46,7 @@ namespace Scripts.Controllers
         private void SetHealth(int value)
         {
             playerModel.health = value;
-            //healthView.SetHealth(playerModel.health);
+            healthView.SetHealth(playerModel.health);
         }
         private void SetScore(int value)
         {

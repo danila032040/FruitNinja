@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5257090eee1ddfc4996318d6d3a4c92f, type: 3}
   m_Name: ScoreConfiguration
   m_EditorClassIdentifier: 
-  MinScore: 0
-  ScoreForFruit: 10
+  StartScore: 0
+  AddScoreForFruit: 10
+  RemoveScoreForFruit: -10
   MaxDestroyIntervalToIncreaseMultiplier: 1

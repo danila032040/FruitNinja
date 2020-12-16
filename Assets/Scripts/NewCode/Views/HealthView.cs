@@ -6,11 +6,16 @@ namespace Scripts.Views
 {
     public class HealthView : MonoBehaviour
     {
-        private int _health;
+        [SerializeField] private HeartCollectionView heartCollectionView;
 
         public void SetHealth(int value)
         {
-            _health = value;
+            heartCollectionView.SetHearts(value);
+        }
+
+        public void AddHealth(int value)
+        {
+            heartCollectionView.AddHearts(value);
         }
     }
 }
