@@ -2,6 +2,8 @@
 using Scripts.Models;
 using Scripts.Views;
 using UnityEngine;
+using UnityEngine.Events;
+using Utils;
 
 namespace Scripts.Controllers
 {
@@ -15,8 +17,16 @@ namespace Scripts.Controllers
         [SerializeField] private HealthConfiguration healthConfiguration;
         [SerializeField] private ScoreConfiguration scoreConfiguration;
 
+
+        public event ValueChanged OnHealthValueChanged;
+        public event ValueChanged OnScoreValueChanged;
+
         public HealthConfiguration HealthConfiguration => healthConfiguration;
         public ScoreConfiguration ScoreConfiguration => scoreConfiguration;
+
+        public float GetHealth() => playerModel.health;
+        public float GetScore() => playerModel.maxScore;
+        public float GetMaxScore() => playerModel.maxScore;
 
         private void Start()
         {
@@ -33,15 +43,16 @@ namespace Scripts.Controllers
 
         public void AddHealth(int value)
         {
+            OnHealthValueChanged?.Invoke(value, playerModel.health + value);
             playerModel.health += value;
             healthView.AddHealth(value);
         }
         public void AddScore(int value)
         {
+            OnScoreValueChanged?.Invoke(value, playerModel.currScore + value);
             playerModel.currScore += value;
             scoreView.AddCurrentScore(value);
         }
-
 
         private void SetHealth(int value)
         {

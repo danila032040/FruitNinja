@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Scripts.Controllers;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,12 +21,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float minIntervalBlock = 0.25f;
     [SerializeField] private float maxIntervalBlock = 0.5f;
 
-    private Coroutine spawnCoroutine;
+    [SerializeField] private PlayerController playerController;
 
-    public void Start()
-    {
-        StartSpawn();
-    }
+    private Coroutine spawnCoroutine;
 
     public void StartSpawn()
     {
@@ -68,9 +66,9 @@ public class SpawnManager : MonoBehaviour
         int random = Random.Range(0, summaryPriority);
 
         int currentSum = 0;
-        for (int i=0; i<zoneSpawners.Count; ++i)
+        for (int i = 0; i < zoneSpawners.Count; ++i)
         {
-            if (currentSum < random && random < currentSum+zoneSpawners[i].Priority)
+            if (currentSum < random && random < currentSum + zoneSpawners[i].Priority)
             {
                 return zoneSpawners[i];
             }

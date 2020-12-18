@@ -15,6 +15,10 @@ public class Block : PhysicalObject
     {
         isSliced = true;
     }
+    public void DisableSlice()
+    {
+        isSliced = true;
+    }
 
     private void OnBecameInvisible()
     {
