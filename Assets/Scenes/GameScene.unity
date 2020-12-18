@@ -1821,6 +1821,8 @@ MonoBehaviour:
   maxIntervalPack: 6
   minIntervalBlock: 0.25
   maxIntervalBlock: 0.5
+  spawnBombChance: 0.3
+  bomb: {fileID: 1980426186702730323, guid: c0daffdfd05030e4f826acb0b2a61770, type: 3}
   playerController: {fileID: 1267819353}
 --- !u!4 &1447843995
 Transform:

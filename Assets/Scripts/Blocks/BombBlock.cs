@@ -36,7 +36,8 @@ public class BombBlock : Block
                 item.AddVelocity(distance * _velocityPerDistance);
             }
 
-            BombExplosionEffect effect = Instantiate(bombExplosionEffect, this.transform);
+            BombExplosionEffect effect = Instantiate(bombExplosionEffect, this.transform.position, this.transform.rotation);
+            effect.ShowEffects();
 
             Destroy(this.gameObject);
         }

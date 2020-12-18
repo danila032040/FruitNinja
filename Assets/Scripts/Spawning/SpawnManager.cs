@@ -21,6 +21,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float minIntervalBlock = 0.25f;
     [SerializeField] private float maxIntervalBlock = 0.5f;
 
+    [SerializeField] private float spawnBombChance = 1f;
+
+
+    [SerializeField] private BombBlock bomb;
+
     [SerializeField] private PlayerController playerController;
 
     private Coroutine spawnCoroutine;
@@ -55,6 +60,7 @@ public class SpawnManager : MonoBehaviour
         while (countBlocks > 0)
         {
             BlockManager.existBlocks.Add(ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock()));
+            if (Random.Range(0f, 1f) <= spawnBombChance) BlockManager.existBlocks.Add(ChooseZoneSpawnerByPriority().SpawnBlock(bomb));
             --countBlocks;
             yield return new WaitForSeconds(LerpByDifficulty(maxIntervalBlock, minIntervalBlock));
         }
