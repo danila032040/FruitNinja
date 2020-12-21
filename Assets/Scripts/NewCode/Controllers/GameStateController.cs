@@ -4,6 +4,7 @@ using Scripts.Views;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using System;
 
 public class GameStateController : MonoBehaviour
 {
@@ -41,13 +42,15 @@ public class GameStateController : MonoBehaviour
         {
             gameState = GameState.IsStopped;
             _spawnManager.StopSpawn();
-            StartCoroutine(DisplayRestartCoroutine());
+            StartCoroutine(GameOverCoroutine());
         }
     }
 
-    public IEnumerator DisplayRestartCoroutine()
+    public IEnumerator GameOverCoroutine()
     {
         yield return new WaitUntil(() => !BlockManager.GetInstance().GetAll().Any());
+        PlayerPrefs.SetInt("MaxScore", Math.Max(_playerController.GetMaxScore(), _playerController.GetScore()));
+        PlayerPrefs.Save();
         _popupSystem.ShowRestartPopup($"Ты набрал {_playerController.GetScore()} очков.", RestartGame);
     }
 

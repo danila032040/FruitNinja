@@ -24,9 +24,9 @@ namespace Scripts.Controllers
         public HealthConfiguration HealthConfiguration => healthConfiguration;
         public ScoreConfiguration ScoreConfiguration => scoreConfiguration;
 
-        public float GetHealth() => playerModel.health;
-        public float GetScore() => playerModel.currScore;
-        public float GetMaxScore() => playerModel.maxScore;
+        public int GetHealth() => playerModel.health;
+        public int GetScore() => playerModel.currScore;
+        public int GetMaxScore() => playerModel.maxScore;
 
         private void Start()
         {
@@ -37,7 +37,7 @@ namespace Scripts.Controllers
         {
             SetHealth(healthConfiguration.MaxHealth);
             SetScore(scoreConfiguration.StartScore);
-            SetMaxScore(20);
+            SetMaxScore(PlayerPrefs.GetInt("MaxScore",0));
         }
 
 
