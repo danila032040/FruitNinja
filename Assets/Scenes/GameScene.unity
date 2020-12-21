@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c719e373ec7694446b4a02b96c936926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSlicingDistance: 0.005
+  minSlicingVelocity: 0.0005
 --- !u!4 &972360329
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,7 +1170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972360327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1002672618}
@@ -1823,7 +1823,7 @@ MonoBehaviour:
   minIntervalBlock: 0.25
   maxIntervalBlock: 0.5
   spawnBombChance: 0.3
-  bombCountPercentageOfPack: 0.1
+  bombCountPercentageOfPack: 0.5
   bomb: {fileID: 1980426186702730323, guid: c0daffdfd05030e4f826acb0b2a61770, type: 3}
   playerController: {fileID: 1267819353}
 --- !u!4 &1447843995

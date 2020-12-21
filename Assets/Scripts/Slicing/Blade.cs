@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    [SerializeField] private float minSlicingDistance = 0.01f;
+    [SerializeField] private float minSlicingVelocity = 0.01f;
 
     private Camera mainCamera;
     private bool isSlicing;
@@ -31,13 +31,11 @@ public class Blade : MonoBehaviour
     {
         Vector3 newPosition = Input.mousePosition;
         newPosition.z = mainCamera.nearClipPlane;
+        newPosition = mainCamera.ScreenToWorldPoint(newPosition);
 
-        gameObject.transform.position = mainCamera.ScreenToWorldPoint(newPosition);
+        gameObject.transform.position = newPosition;
 
-
-        newPosition = mainCamera.ScreenToViewportPoint(newPosition);
-
-        if (isSlicing && Mathf.Abs(newPosition.magnitude - oldPosition.magnitude) >= minSlicingDistance)
+        if (isSlicing && (newPosition - oldPosition).magnitude * Time.deltaTime > minSlicingVelocity)
         {
             trail.enabled = true;
             trail.emitting = true;
@@ -65,6 +63,11 @@ public class Blade : MonoBehaviour
     {
         isSlicing = true;
         trail.enabled = false;
+
+        Vector3 newPosition = Input.mousePosition;
+        newPosition.z = mainCamera.nearClipPlane;
+        newPosition = mainCamera.ScreenToWorldPoint(newPosition);
+        oldPosition = newPosition;
     }
 
     public void EndSlicing()
