@@ -25,7 +25,7 @@ namespace Scripts.Controllers
         public ScoreConfiguration ScoreConfiguration => scoreConfiguration;
 
         public float GetHealth() => playerModel.health;
-        public float GetScore() => playerModel.maxScore;
+        public float GetScore() => playerModel.currScore;
         public float GetMaxScore() => playerModel.maxScore;
 
         private void Start()

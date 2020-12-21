@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f61cc83c1ea3ac4f8cc0d58be478850, type: 3}
-  m_Name: HealthConfiguration
+  m_Script: {fileID: 11500000, guid: 2bf44675d19a58945b9b7059960e63c7, type: 3}
+  m_Name: PopUpSystemConfiguration
   m_EditorClassIdentifier: 
-  MaxHealth: 1
-  MinHealth: 0
-  AddHealthForSlicingFruit: -1
-  AddHealthForSlicingBomb: -1
+  _restartPopupPrefab: {fileID: 2288415491532097014, guid: ef1ae0bd1293bed46a98a0ab876777d7,
+    type: 3}

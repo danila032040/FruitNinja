@@ -555,6 +555,7 @@ MonoBehaviour:
   _playerController: {fileID: 1267819353}
   _spawnManager: {fileID: 1447843994}
   _gameOverView: {fileID: 624819408}
+  _popupSystem: {fileID: 11400000, guid: a4748559101a645459d278e922f31470, type: 2}
 --- !u!4 &378127647
 Transform:
   m_ObjectHideFlags: 0
