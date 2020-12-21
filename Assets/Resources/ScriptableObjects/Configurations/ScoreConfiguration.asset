@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartScore: 0
   AddScoreForFruit: 10
-  RemoveScoreForFruit: -10
+  RemoveScoreForFruit: 0
   MaxDestroyIntervalToIncreaseMultiplier: 1

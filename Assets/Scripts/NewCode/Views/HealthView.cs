@@ -15,6 +15,7 @@ namespace Scripts.Views
 
         public void AddHealth(int value)
         {
+            if (value == 0) return;
             heartCollectionView.AddHearts(value);
         }
     }

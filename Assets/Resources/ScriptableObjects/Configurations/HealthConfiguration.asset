@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f61cc83c1ea3ac4f8cc0d58be478850, type: 3}
   m_Name: HealthConfiguration
   m_EditorClassIdentifier: 
-  MaxHealth: 1
+  MaxHealth: 3
   MinHealth: 0
   AddHealthForSlicingFruit: -1
   AddHealthForSlicingBomb: -1

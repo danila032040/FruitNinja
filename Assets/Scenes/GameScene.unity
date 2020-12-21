@@ -554,7 +554,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1267819353}
   _spawnManager: {fileID: 1447843994}
-  _gameOverView: {fileID: 624819408}
   _popupSystem: {fileID: 11400000, guid: a4748559101a645459d278e922f31470, type: 2}
 --- !u!4 &378127647
 Transform:
@@ -884,6 +883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverText: {fileID: 179629754}
   _restartButton: {fileID: 1143914759}
+  _maxScore: 0
 --- !u!1 &701802150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,12 +1817,13 @@ MonoBehaviour:
   - {fileID: 6199316937572605127, guid: 34e46449abe4f4e4a9335a1f9f9b0361, type: 3}
   minBlocksInPack: 2
   maxBlocksInPack: 5
-  maxDifficulty: 100
+  maxDifficulty: 25
   minIntervalPack: 3
   maxIntervalPack: 6
   minIntervalBlock: 0.25
   maxIntervalBlock: 0.5
   spawnBombChance: 0.3
+  bombCountPercentageOfPack: 0.1
   bomb: {fileID: 1980426186702730323, guid: c0daffdfd05030e4f826acb0b2a61770, type: 3}
   playerController: {fileID: 1267819353}
 --- !u!4 &1447843995

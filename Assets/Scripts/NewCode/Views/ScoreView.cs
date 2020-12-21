@@ -50,6 +50,7 @@ namespace Scripts.Views
 
         public void AddCurrentScore(int value)
         {
+            if (value == 0) return;
             StartCoroutine(AddCurrentScoreCoroutine(value));
 
         }
