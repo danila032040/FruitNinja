@@ -22,6 +22,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float maxIntervalBlock = 0.5f;
 
     [SerializeField] private float spawnBombChance = 1f;
+    [SerializeField] private float bombCountPercentageOfPack = 0.1f;
 
 
     [SerializeField] private BombBlock bomb;
@@ -55,15 +56,21 @@ public class SpawnManager : MonoBehaviour
 
     private float GetPercentage(float min, float max) => Mathf.Min(1, min / max);
 
+
     private IEnumerator SpawnPackOfBlocks(int countBlocks)
     {
+        int bombsCount = (int)Mathf.Lerp(0, countBlocks, bombCountPercentageOfPack);
         while (countBlocks > 0)
         {
             Block block = ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock());
             BlockManager.GetInstance().Add(block);
             PhysicalObjectManager.GetInstance().Add(block);
-            if (Random.Range(0f, 1f) <= spawnBombChance) BlockManager.GetInstance().Add(ChooseZoneSpawnerByPriority().SpawnBlock(bomb));
             --countBlocks;
+            if (bombsCount > 0 && Random.Range(0f, 1f) <= spawnBombChance)
+            {
+                BlockManager.GetInstance().Add(ChooseZoneSpawnerByPriority().SpawnBlock(bomb));
+                --bombsCount;
+            }
             yield return new WaitForSeconds(LerpByDifficulty(maxIntervalBlock, minIntervalBlock));
         }
     }
