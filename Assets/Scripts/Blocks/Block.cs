@@ -27,6 +27,7 @@ public class Block : PhysicalObject
 
     protected virtual void OnDestroy()
     {
-        BlockManager.existBlocks.Remove(this);
+        BlockManager.GetInstance().Remove(this);
+        PhysicalObjectManager.GetInstance().Remove(this);
     }
 }

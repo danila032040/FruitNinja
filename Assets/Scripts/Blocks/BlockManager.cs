@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using Scripts.Abstracts;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using UnityEngine;
-using UnityEngine.Events;
 
-public static class BlockManager
+public class BlockManager : Singleton<BlockManager> , IRepository<Block>
 {
-    public static List<Block> existBlocks = new List<Block>();
+    private readonly List<Block> _existBlocks = new List<Block>();
+    public IEnumerable<Block> GetAll() => _existBlocks;
+    public void Add(Block value) => _existBlocks.Add(value);
+    public void Remove(Block value) => _existBlocks.Remove(value);
 }

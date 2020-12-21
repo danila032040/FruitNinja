@@ -59,8 +59,10 @@ public class SpawnManager : MonoBehaviour
     {
         while (countBlocks > 0)
         {
-            BlockManager.existBlocks.Add(ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock()));
-            if (Random.Range(0f, 1f) <= spawnBombChance) BlockManager.existBlocks.Add(ChooseZoneSpawnerByPriority().SpawnBlock(bomb));
+            Block block = ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock());
+            BlockManager.GetInstance().Add(block);
+            PhysicalObjectManager.GetInstance().Add(block);
+            if (Random.Range(0f, 1f) <= spawnBombChance) BlockManager.GetInstance().Add(ChooseZoneSpawnerByPriority().SpawnBlock(bomb));
             --countBlocks;
             yield return new WaitForSeconds(LerpByDifficulty(maxIntervalBlock, minIntervalBlock));
         }

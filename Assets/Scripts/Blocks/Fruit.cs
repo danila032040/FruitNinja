@@ -38,6 +38,9 @@ public class Fruit : Block
             SlicedPart left = Instantiate(slicedPartPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
             SlicedPart right = Instantiate(slicedPartPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
 
+            PhysicalObjectManager.GetInstance().Add(left);
+            PhysicalObjectManager.GetInstance().Add(right);
+
             left.SetSprite(sprites[0]);
             right.SetSprite(sprites[1]);
 

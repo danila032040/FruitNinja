@@ -52,7 +52,7 @@ public class Blade : MonoBehaviour
 
     public void SliceBlocks(Vector3 direction)
     {
-        foreach(Block block in BlockManager.existBlocks)
+        foreach(Block block in BlockManager.GetInstance().GetAll())
         {
             if ((gameObject.transform.position - block.gameObject.transform.position).magnitude<=block.Radius)
             {

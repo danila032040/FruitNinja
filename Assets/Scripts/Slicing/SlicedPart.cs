@@ -24,4 +24,9 @@ public class SlicedPart : PhysicalObject
     {
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        PhysicalObjectManager.GetInstance().Remove(this);
+    }
 }

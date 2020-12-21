@@ -28,18 +28,26 @@ public class BombBlock : Block
         if (!isSliced)
         {
             playerController.AddHealth(playerController.HealthConfiguration.AddHealthForSlicingBomb);
-            foreach (Block item in BlockManager.existBlocks)
-            {
-                item.DisableSlice();
 
+            foreach (Block item in BlockManager.GetInstance().GetAll()) item.DisableSlice();
+
+            foreach (PhysicalObject item in PhysicalObjectManager.GetInstance().GetAll())
+            {
                 Vector3 distance = item.transform.position - this.transform.position;
                 item.AddVelocity(distance * _velocityPerDistance);
             }
 
-            BombExplosionEffect effect = Instantiate(bombExplosionEffect, this.transform.position, this.transform.rotation);
-            effect.ShowEffects();
 
-            Destroy(this.gameObject);
+            Explode();
+            isSliced = true;
         }
+    }
+
+    private void Explode()
+    {
+        BombExplosionEffect effect = Instantiate(bombExplosionEffect, this.transform.position, this.transform.rotation);
+        effect.ShowEffects();
+
+        Destroy(this.gameObject);
     }
 }
