@@ -31,6 +31,7 @@ namespace Scripts.Controllers
 
         private void LoadedScene()
         {
+            _loadSceneImage.enabled = true;
             _loadSceneImage.raycastTarget = false;
             _loadSceneImage.DOFade(0, .5f);
         }
