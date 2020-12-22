@@ -12,12 +12,12 @@ namespace Scripts.Configurations.Popup
 
         [SerializeField] private RestartPopupView _restartPopupPrefab;
 
-        public void ShowRestartPopup(string message, Action restart)
+        public void ShowRestartPopup(string message, Action restart, Action menu)
         {
             RestartPopupView obj = Instantiate(_restartPopupPrefab);
             _stack.Push(obj);
             obj.SortOrder = _stack.Count;
-            obj.Show(message, restart, ()=> { _stack.Pop(); });
+            obj.Show(message, restart, menu, ()=> { _stack.Pop(); });
         }
     }
 }

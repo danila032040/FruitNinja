@@ -2,7 +2,6 @@
 using Scripts.Models;
 using Scripts.Views;
 using UnityEngine;
-using UnityEngine.Events;
 using Utils;
 
 namespace Scripts.Controllers

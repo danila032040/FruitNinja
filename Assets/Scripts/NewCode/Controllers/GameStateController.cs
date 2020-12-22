@@ -1,6 +1,5 @@
 ﻿using Scripts.Controllers;
 using Scripts.Configurations.Popup;
-using Scripts.Views;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
@@ -19,6 +18,8 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private SpawnManager _spawnManager;
 
     [SerializeField] private PopupSystem _popupSystem;
+
+    [SerializeField] SceneChanger _sceneChanger;
 
     private GameState gameState;
 
@@ -51,13 +52,24 @@ public class GameStateController : MonoBehaviour
         yield return new WaitUntil(() => !BlockManager.GetInstance().GetAll().Any());
         PlayerPrefs.SetInt("MaxScore", Math.Max(_playerController.GetMaxScore(), _playerController.GetScore()));
         PlayerPrefs.Save();
-        _popupSystem.ShowRestartPopup($"Ты набрал {_playerController.GetScore()} очков.", RestartGame);
+        _popupSystem.ShowRestartPopup($"Ты набрал {_playerController.GetScore()} очков.", RestartGame, GoToStartScene);
+    }
+
+    public void GoToStartScene()
+    {
+        _sceneChanger.LoadStartScene();
     }
 
     public void RestartGame()
     {
         gameState = GameState.IsPlaying;
         _playerController.ResetPlayer();
+        StartCoroutine(StartSpawnCoroutine());
+    }
+
+    public IEnumerator StartSpawnCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
         _spawnManager.StartSpawn();
     }
 }
