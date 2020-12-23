@@ -16,3 +16,4 @@ MonoBehaviour:
   MinHealth: 0
   AddHealthForSlicingFruit: -1
   AddHealthForSlicingBomb: -1
+  AddHealthForSlicingHeart: 1

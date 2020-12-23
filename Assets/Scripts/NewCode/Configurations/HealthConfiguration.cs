@@ -10,6 +10,7 @@ namespace Scripts.Configurations
 
         public int AddHealthForSlicingFruit;
         public int AddHealthForSlicingBomb;
+        public int AddHealthForSlicingHeart;
 
     }
 }

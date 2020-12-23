@@ -24,8 +24,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnBombChance = 1f;
     [SerializeField] private float bombCountPercentageOfPack = 0.1f;
 
+    [SerializeField] private float spawnHeartChance = 1f;
+
 
     [SerializeField] private BombBlock bomb;
+    [SerializeField] private HeartBlock heart;
 
     [SerializeField] private PlayerController playerController;
 
@@ -60,6 +63,7 @@ public class SpawnManager : MonoBehaviour
     private IEnumerator SpawnPackOfBlocks(int countBlocks)
     {
         int bombsCount = (int)Mathf.Lerp(0, countBlocks, bombCountPercentageOfPack);
+        int heartsCount = playerController.HealthConfiguration.MaxHealth - playerController.GetHealth();
         while (countBlocks > 0)
         {
             Block block = ChooseZoneSpawnerByPriority().SpawnBlock(GetRandomBlock());
@@ -70,6 +74,11 @@ public class SpawnManager : MonoBehaviour
             {
                 BlockManager.GetInstance().Add(ChooseZoneSpawnerByPriority().SpawnBlock(bomb));
                 --bombsCount;
+            }
+            if (heartsCount > 0 && Random.Range(0f, 1f) <= spawnHeartChance)
+            {
+                BlockManager.GetInstance().Add(ChooseZoneSpawnerByPriority().SpawnBlock(heart));
+                --heartsCount;
             }
             yield return new WaitForSeconds(LerpByDifficulty(maxIntervalBlock, minIntervalBlock));
         }

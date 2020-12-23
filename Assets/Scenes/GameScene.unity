@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c719e373ec7694446b4a02b96c936926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSlicingVelocity: 0.0005
+  minSlicingVelocity: 0.0001
 --- !u!4 &972360329
 Transform:
   m_ObjectHideFlags: 0
@@ -1941,7 +1941,9 @@ MonoBehaviour:
   maxIntervalBlock: 0.5
   spawnBombChance: 0.3
   bombCountPercentageOfPack: 0.5
+  spawnHeartChance: 0.15
   bomb: {fileID: 1980426186702730323, guid: c0daffdfd05030e4f826acb0b2a61770, type: 3}
+  heart: {fileID: 8736869049474831153, guid: 6b6dc3847aef85c42abd052437fca03f, type: 3}
   playerController: {fileID: 1267819353}
 --- !u!4 &1447843995
 Transform:
