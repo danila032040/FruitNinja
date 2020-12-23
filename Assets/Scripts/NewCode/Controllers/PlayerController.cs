@@ -1,6 +1,7 @@
 ﻿using Scripts.Configurations;
 using Scripts.Models;
 using Scripts.Views;
+using System.Collections;
 using UnityEngine;
 using Utils;
 
@@ -15,6 +16,7 @@ namespace Scripts.Controllers
 
         [SerializeField] private HealthConfiguration healthConfiguration;
         [SerializeField] private ScoreConfiguration scoreConfiguration;
+        [SerializeField] private ComboConfiguration comboConfiguration;
 
 
         public event ValueChanged OnHealthValueChanged;
@@ -22,21 +24,38 @@ namespace Scripts.Controllers
 
         public HealthConfiguration HealthConfiguration => healthConfiguration;
         public ScoreConfiguration ScoreConfiguration => scoreConfiguration;
+        public ComboConfiguration ComboConfiguration => comboConfiguration;
 
         public int GetHealth() => playerModel.health;
         public int GetScore() => playerModel.currScore;
         public int GetMaxScore() => playerModel.maxScore;
+        public int GetCombo() => playerModel.combo;
 
         private void Start()
         {
             ResetPlayer();
+            StartCoroutine(DecCombo());
         }
 
         public void ResetPlayer()
         {
             SetHealth(healthConfiguration.MaxHealth);
             SetScore(scoreConfiguration.StartScore);
-            SetMaxScore(PlayerPrefs.GetInt("MaxScore",0));
+            SetMaxScore(PlayerPrefs.GetInt("MaxScore", 0));
+            SetCombo(comboConfiguration.MinCombo);
+        }
+
+        private IEnumerator DecCombo()
+        {
+            while (true)
+            {
+                if (playerModel.combo > comboConfiguration.MinCombo)
+                {
+                    yield return new WaitForSeconds(comboConfiguration.TimeToDecCombo);
+                    SetCombo(playerModel.combo - 1);
+                }
+                yield return null;
+            }
         }
 
 
@@ -48,9 +67,20 @@ namespace Scripts.Controllers
         }
         public void AddScore(int value)
         {
+            if (value > 0) value *= playerModel.combo;
             OnScoreValueChanged?.Invoke(value, playerModel.currScore + value);
             playerModel.currScore += value;
             scoreView.AddCurrentScore(value);
+        }
+
+        private float _lastTimeSliced;
+        public void SetLastTimeFruitSliced(float time)
+        {
+            float currTime = Time.realtimeSinceStartup;
+            if (currTime - _lastTimeSliced <= comboConfiguration.TimeToIncCombo)
+                SetCombo(playerModel.combo + 1);
+
+            _lastTimeSliced = currTime;
         }
 
         private void SetHealth(int value)
@@ -67,6 +97,12 @@ namespace Scripts.Controllers
         {
             playerModel.maxScore = value;
             scoreView.SetMaxScore(playerModel.maxScore);
+        }
+
+        private void SetCombo(int value)
+        {
+            playerModel.combo = value;
+            scoreView.SetCombo(playerModel.combo);
         }
     }
 }

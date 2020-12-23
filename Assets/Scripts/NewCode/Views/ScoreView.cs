@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scripts.Configurations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,9 @@ namespace Scripts.Views
         [SerializeField] private Text _currScoreText;
         [SerializeField] private Text _maxScoreText;
         [SerializeField] private Text _addingText;
+        [SerializeField] private Text _combo;
+
+        [SerializeField] private ComboConfiguration comboConfiguration;
 
         [SerializeField] private CanvasRenderer _maxAndCurrScore;
 
@@ -47,6 +51,11 @@ namespace Scripts.Views
             else TryShowMaxScore();
         }
 
+        public void SetCombo(int value)
+        {
+            if (value <= comboConfiguration.MinCombo) _combo.text = "";
+            else _combo.text = $"x{value}";
+        }
 
         public void AddCurrentScore(int value)
         {

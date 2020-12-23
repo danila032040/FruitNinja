@@ -9,5 +9,6 @@ namespace Scripts.Models
         public int health;
         public int currScore;
         public int maxScore;
+        public int combo;
     }
 }
