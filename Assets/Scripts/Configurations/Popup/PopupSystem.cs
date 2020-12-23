@@ -10,14 +10,14 @@ namespace Scripts.Configurations.Popup
     {
         private readonly Stack<PopupView> _stack = new Stack<PopupView>();
 
-        [SerializeField] private RestartPopupView _restartPopupPrefab;
+        [SerializeField] private List<PopupView> _popupViews;
 
-        public void ShowRestartPopup(string message, Action restart, Action menu)
+        public void ShowPopup(int id, string message, params Action[] actions)
         {
-            RestartPopupView obj = Instantiate(_restartPopupPrefab);
+            PopupView obj = Instantiate(_popupViews[id]);
             _stack.Push(obj);
             obj.SortOrder = _stack.Count;
-            obj.Show(message, restart, menu, ()=> { _stack.Pop(); });
+            obj.Show(message, () => { _stack.Pop(); }, actions);
         }
     }
 }

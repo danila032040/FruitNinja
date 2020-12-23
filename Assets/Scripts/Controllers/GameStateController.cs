@@ -56,7 +56,7 @@ namespace Scripts.Controllers
             yield return new WaitUntil(() => !BlockManager.GetInstance().GetAll().Any());
             PlayerPrefs.SetInt("MaxScore", Math.Max(_playerController.GetMaxScore(), _playerController.GetScore()));
             PlayerPrefs.Save();
-            _popupSystem.ShowRestartPopup($"Ты набрал {_playerController.GetScore()} очков.", RestartGame, GoToStartScene);
+            _popupSystem.ShowPopup(0, $"Ты набрал {_playerController.GetScore()} очков.", RestartGame, GoToStartScene);
         }
 
         public async void GoToStartScene()

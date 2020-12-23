@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf44675d19a58945b9b7059960e63c7, type: 3}
   m_Name: PopUpSystemConfiguration
   m_EditorClassIdentifier: 
-  _restartPopupPrefab: {fileID: 2288415491532097014, guid: ef1ae0bd1293bed46a98a0ab876777d7,
-    type: 3}
+  _popupViews:
+  - {fileID: 2288415491532097014, guid: ef1ae0bd1293bed46a98a0ab876777d7, type: 3}
