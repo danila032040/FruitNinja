@@ -52,8 +52,8 @@ public class Fruit : Block
             effect.SetColor(FruitColor);
             effect.ShowEffects();
 
-            playerController.SetLastTimeFruitSliced(Time.realtimeSinceStartup);
             playerController.AddScore(playerController.ScoreConfiguration.AddScoreForFruit);
+            playerController.SetLastTimeFruitSliced(Time.realtimeSinceStartup);
         }
     }
 
