@@ -91,18 +91,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4872418766978574415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4cfe61275fccb0498479e26807e8911, type: 3}
+  m_Script: {fileID: 11500000, guid: f907a966b55b66c4ebcaa0e8cd876780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 1
   weight: 1
   velocityRotation: 0
-  radius: 0.3
+  radius: 0.25
   spriteRenderer: {fileID: 4872418766978574401}
-  slicedPartPrefab: {fileID: 7502067253601482142, guid: b57ed5faa02c3574db5c79488c97380d,
+  slicedPartFruitPrefab: {fileID: 7502067253601482142, guid: b57ed5faa02c3574db5c79488c97380d,
     type: 3}
   slicingEffectPrefab: {fileID: 6977841623604107169, guid: c2d5bc014e5896343aa0da8dbb6dc673,
     type: 3}
-  playerController: {fileID: 0}
-  scoreConfiguration: {fileID: 11400000, guid: 5e597ca1e7d1a2240ab20ec3cb4819e1, type: 2}
   FruitColor: {r: 0, g: 0, b: 0, a: 0}

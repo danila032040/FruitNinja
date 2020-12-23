@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2100400866700192310}
   - component: {fileID: 3757492707992217069}
   - component: {fileID: 7929445327223619392}
-  - component: {fileID: 8736869049474831153}
+  - component: {fileID: 4824720398826915759}
   m_Layer: 0
-  m_Name: Heart 1
+  m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8736869049474831153
+--- !u!114 &4824720398826915759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8736869049474831152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfd92808383369e4bb8142e2ff7744b8, type: 3}
+  m_Script: {fileID: 11500000, guid: d2ffdd4c0e5c79f409572be38ee49c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 1.5

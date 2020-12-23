@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2f2c8f7bd431e4b80f13ebd9c24fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 2789690938094994454}
   _downScale: 0.8
   _upScale: 1
 --- !u!1 &8243389324522887788
@@ -523,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2f2c8f7bd431e4b80f13ebd9c24fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 4176712376794525340}
   _downScale: 0.8
   _upScale: 1
 --- !u!1001 &3527318284424553252

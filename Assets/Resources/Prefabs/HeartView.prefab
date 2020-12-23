@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3359759425951909801}
   - component: {fileID: 1024539855392501028}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: HeartView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,10 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7177370615680678824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21190cb65e3c85e4f92f2b8469f55421, type: 3}
+  m_Script: {fileID: 11500000, guid: 616f3d0b711f5a442aa1ff4fe6511125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 1024539855392501028}
+  _animator: {fileID: 1024539855392501028}
 --- !u!95 &1024539855392501028
 Animator:
   serializedVersion: 3
