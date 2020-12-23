@@ -112,7 +112,7 @@ namespace Scripts.Views
 
         private IEnumerator HideMaxScoreCoroutine()
         {
-            _oldPosition = _currScoreText.transform.position;
+            _oldPosition = _currScoreText.transform.parent.position;
 
             Color startColor = _maxScoreText.color;
             Color endColor = _maxScoreText.color;
@@ -121,7 +121,7 @@ namespace Scripts.Views
             float currPercent = 0f;
             while (currPercent <= 1)
             {
-                _currScoreText.transform.position = Vector3.Lerp(_currScoreText.transform.position, _maxAndCurrScore.transform.position, currPercent);
+                _currScoreText.transform.parent.position = Vector3.Lerp(_currScoreText.transform.position, _maxAndCurrScore.transform.position, currPercent);
 
                 _maxScoreText.color = Color.Lerp(startColor, endColor, currPercent);
 
@@ -143,7 +143,7 @@ namespace Scripts.Views
             float currPercent = 0f;
             while (currPercent <= 1f)
             {
-                _currScoreText.transform.position = Vector3.Lerp(_currScoreText.transform.position, _oldPosition, currPercent);
+                _currScoreText.transform.parent.position = Vector3.Lerp(_currScoreText.transform.position, _oldPosition, currPercent);
 
                 _maxScoreText.color = Color.Lerp(startColor, endColor, currPercent);
 

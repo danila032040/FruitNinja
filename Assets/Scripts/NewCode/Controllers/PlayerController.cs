@@ -101,6 +101,7 @@ namespace Scripts.Controllers
 
         private void SetCombo(int value)
         {
+            if (value >= comboConfiguration.MaxCombo) return;
             playerModel.combo = value;
             scoreView.SetCombo(playerModel.combo);
         }
