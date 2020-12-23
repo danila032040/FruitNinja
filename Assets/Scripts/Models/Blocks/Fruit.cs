@@ -53,7 +53,9 @@ namespace Scripts.Models.Blocks
                 left.AddVelocity(Quaternion.Euler(0, 0, 90) * direction);
                 right.AddVelocity(Quaternion.Euler(0, 0, -90) * direction);
 
-                SlicingFruitEffect effect = Instantiate(slicingEffectPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+                Vector3 effectPosition = this.transform.position;
+                effectPosition.z = 0;
+                SlicingFruitEffect effect = Instantiate(slicingEffectPrefab, effectPosition, this.transform.rotation);
 
                 effect.SetColor(FruitColor);
                 effect.ShowEffects();

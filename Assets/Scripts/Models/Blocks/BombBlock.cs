@@ -51,7 +51,9 @@ namespace Scripts.Models.Blocks
 
         private void Explode()
         {
-            BombExplosionEffect effect = Instantiate(bombExplosionEffect, this.transform.position, this.transform.rotation);
+            Vector3 effectPosition = this.transform.position;
+            effectPosition.z = 0;
+            BombExplosionEffect effect = Instantiate(bombExplosionEffect, effectPosition, this.transform.rotation);
             effect.ShowEffects();
 
             Destroy(this.gameObject);
